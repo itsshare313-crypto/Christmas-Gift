@@ -1,0 +1,160 @@
+:root {
+    --primary-red: #b30000;
+    --gold: #d4af37;
+    --soft-white: #fefefe;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a0a0a;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow: hidden;
+    transition: background 1.2s ease;
+}
+
+/* Scene Transitions */
+.scene {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.scene.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Page 1: Envelope */
+.envelope-wrapper {
+    position: relative;
+    width: 250px;
+    height: 180px;
+    background: var(--soft-white);
+    cursor: pointer;
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.envelope-wrapper::after {
+    content: "❤️";
+    font-size: 2.5rem;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.tap-hint { margin-top: 20px; font-style: italic; color: var(--gold); }
+
+/* Page 2: Memory Slider */
+.romantic-text { font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--gold); text-align: center; }
+.memory-container { height: 100px; margin: 20px 0; }
+#memory-text { font-size: 1.5rem; transition: opacity 0.5s ease; }
+
+.nav-btn {
+    padding: 12px 35px;
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-btn:hover { background: var(--gold); color: black; box-shadow: 0 0 20px var(--gold); }
+
+/* Page 3: Gift Grid */
+.gift-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 20px;
+}
+
+.gift-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.3s; }
+.gift-item:hover { transform: translateY(-10px); }
+
+.mini-gift {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-red);
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.mini-lid {
+    width: 90px;
+    height: 20px;
+    background: #800000;
+    position: absolute;
+    top: -10px;
+    left: -5px;
+    border-radius: 3px;
+}
+
+.mini-ribbon {
+    width: 15px; height: 100%; background: var(--gold);
+    position: absolute; left: 50%; transform: translateX(-50%);
+}
+
+.gift-label { margin-top: 10px; font-size: 0.9rem; color: var(--gold); }
+
+/* Message Overlay */
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85); display: none;
+    justify-content: center; align-items: center;
+    z-index: 1000; backdrop-filter: blur(10px);
+}
+
+.message-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 50px; border-radius: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    text-align: center; max-width: 400px;
+    animation: popUp 0.5s ease-out;
+}
+
+@keyframes popUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.close-btn { margin-top: 25px; background: var(--gold); border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+
+/* Snowflakes */
+.snowflake { position: absolute; background: white; border-radius: 50%; pointer-events: none; animation: fall linear infinite; }
+@keyframes fall { to { transform: translateY(100vh); } }
+
+/* Mobile Optimization */
+@media (max-width: 600px) {
+    .gift-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 gifts per row instead of 3 */
+        gap: 20px;
+    }
+
+    .romantic-text {
+        font-size: 2rem; /* Slightly smaller text for mobile */
+        padding: 0 20px;
+    }
+
+    .message-card {
+        width: 85%;
+        padding: 30px 20px;
+    }
+}
