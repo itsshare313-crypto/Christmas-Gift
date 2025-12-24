@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas, My Love</title>
+    <link rel="stylesheet" href="gift.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital@1&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="snow-container" id="snow"></div>
+
+    <section id="page1" class="scene active">
+        <div class="envelope-wrapper" onclick="nextPage(2)">
+            <div class="envelope"></div>
+            <div class="letter">
+                <p>To My Love...</p>
+            </div>
+        </div>
+        <p class="tap-hint">Tap the letter to open</p>
+    </section>
+
+    <section id="page2" class="scene">
+        <h2 class="romantic-text">This year with you has been...</h2>
+        <div class="memory-container">
+            <p id="memory-text" class="memory-animation">The best adventure of my life.</p>
+        </div>
+        <button class="nav-btn" onclick="nextPage(3)">Continue the Surprise →</button>
+    </section>
+
+    <section id="page3" class="scene">
+        <h1 class="title">Pick a Gift, My Love...</h1>
+        
+        <div class="gift-grid">
+            <div class="gift-item" onclick="openSpecialGift(0, '#4a0e0e')">
+                <div class="mini-gift"><div class="mini-lid"></div><div class="mini-ribbon"></div></div>
+                <span class="gift-label">Open Me</span>
+            </div>
+            <div class="gift-item" onclick="openSpecialGift(1, '#0e2a4a')">
+                <div class="mini-gift"><div class="mini-lid"></div><div class="mini-ribbon"></div></div>
+                <span class="gift-label">A Surprise</span>
+            </div>
+            <div class="gift-item" onclick="openSpecialGift(2, '#1b4a0e')">
+                <div class="mini-gift"><div class="mini-lid"></div><div class="mini-ribbon"></div></div>
+                <span class="gift-label">For You</span>
+            </div>
+            <div class="gift-item" onclick="openSpecialGift(3, '#3b0e4a')">
+                <div class="mini-gift"><div class="mini-lid"></div><div class="mini-ribbon"></div></div>
+                <span class="gift-label">My Heart</span>
+            </div>
+            <div class="gift-item" onclick="openSpecialGift(4, '#4a320e')">
+                <div class="mini-gift"><div class="mini-lid"></div><div class="mini-ribbon"></div></div>
+                <span class="gift-label">Forever</span>
+            </div>
+        </div>
+
+        <div id="messageOverlay" class="overlay">
+            <div class="message-card">
+                <h2 id="msgHeader"></h2>
+                <p id="msgBody"></p>
+                <button class="close-btn" onclick="closeOverlay()">Close Gift</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="gift.js"></script>
+</body>
+</html>
